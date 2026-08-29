@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="GrowVest — a multi-asset investment platform demo for crypto, agriculture and real estate opportunities.">
+<title>GrowVest — Invest With Clarity</title>
+<link rel="stylesheet" href="font/css/all.min.css">
+<link rel="stylesheet" href="font/css/fontawesome.min.css">
+<link rel="stylesheet" href="styles.css">
+<script src="config.js"></script>
+<script src="common.js"></script>
+<script src="auth.js"></script>
+</head>
+<body>
+<header class="nav">
+    <div class="side-btn">
+    <button onclick="showSidebar()">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+  </div>
+  <a class="brand" href="index.html"><b>G</b> GrowVest</a>
+<!--  <button class="toggle" aria-label="Open navigation">☰</button>-->
+  <nav class="links">
+    <a href="#about">About</a>
+    <a href="#how">How it works</a>
+    <a href="products.html">Investments</a>
+    <a href="#why">Why GrowVest</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <div class="sidebar">
+    <button onclick="closeSidebar()">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+    <a href="#about">About</a>
+    <a href="#how">How it works</a>
+    <a href="products.html">Investments</a>
+    <a href="#why">Why GrowVest</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact">Contact</a>
+    <span><a class="btn primary nav-register" href="register.html" style="color:#000000; background: rgb(255, 255, 255); width: 200px; text-align: center; font-size: 15px;">Register</a></span>
+  </div>
+  <div>
+     <span id="sessionLinks">
+      <a class="btn secondary nav-login" href="login.html" >Login</a>
+    </span>
+  </div>
+ 
+</header>
+
+<main>
+
+<section class="home-hero">
+  <div class="container hero-inner">
+    <div class="hero-copy">
+      <span class="small-title">
+                    SMARTER FINANCIAL FUTURE
+                </span><br>
+      <span class="eyebrow">CRYPTO · AGRICULTURE · REAL ESTATE</span>
+
+      <h1>Grow your financial status around the real-world opportunities.
+        <br><span style="color: #505050a1; ;">Build Your Future</span>
+      </h1>
+      <p>
+        GrowVest is a multi-asset investment platform that gives you simple and powerful tools to
+        invest, it diversified investing easier to understand, track and manage your money and build long-term wealth.
+      </p>
+      <div class="hero-actions">
+        <a class="btn primary" href="products.html">Explore investments</a>
+        <a class="btn secondary" href="#how">See how it works</a>
+      </div>
+      <p class="hero-note">BTC-only payment mode · Demo platform · Transparent investment information</p>
+    </div>
+    <div class="hero-visual card">
+      <div class="mini-head"><span>Portfolio overview</span><span class="status">Demo</span></div>
+      <strong class="hero-number">Diversify</strong>
+      <p class="muted">One dashboard for digital assets, agriculture projects and real-estate opportunities.</p>
+      <div class="bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="mini-grid">
+        <div><span>Crypto</span><b>Digital assets</b></div>
+        <div><span>Agriculture</span><b>Real-world projects</b></div>
+        <div><span>Real estate</span><b>Property exposure</b></div>
+        <div><span>Payments</span><b>Bitcoin only</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="container trust-strip">
+  <div><strong>50</strong><span>Investment opportunities</span></div>
+  <div><strong>3</strong><span>Asset categories</span></div>
+  <div><strong>BTC</strong><span>Payment method in this demo</span></div>
+  <div><strong>24/7</strong><span>Portfolio access</span></div>
+</section>
+
+<section id="about" class="container content-section" style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+  <div class="section-heading">
+
+    
+    <div class="about-image" style="display: flex; flex-direction: column; justify-content: center; align-items: center; background: #6d6d6d; height: 300px; border-radius: 10px; margin-bottom: 50px;" >
+
+                <div class="about-icon" >
+                    <i class="fas fa-coins" style="background: #fff;font-size: 50px; border-radius:10px; color: #6d6d6d;padding: 25px 35px;"></i>
+                </div>
+                <h3 style="text-align: center; color: #fff; margin-top: 5px; font-size: 35px;" >GrowVest</h3>
+
+                <p style="text-align: center; color: #ffffff86; margin-top: -30px;">
+                    Building better financial futures.
+                </p>
+
+    </div>
+
+    <span class="eyebrow">ABOUT GROWVEST</span>
+    <h2>Your Partner In Building Wealth</h2>
+    <p>
+      GrowVest is designed around a simple idea: investors should be able to
+      discover different asset opportunities, understand their characteristics,
+      fund investments, and monitor activity from a single interface.
+    </p>
+
+    <p>
+      Whether you are starting your first investment or
+      managing a growing portfolio, GrowVest helps you
+      make informed financial decisions.
+    </p>
+
+  </div>
+  <div class="grid grid3" >
+    <article class="card info-card" style="text-align: center; box-shadow: 1px 0 4px rgb(0, 0, 0, .8);">
+      <span class="icon">01</span>
+      <h3>Discover</h3>
+      <p>Browse opportunities by asset class, minimum investment, risk profile and indicative return information.</p></article>
+    <article class="card info-card" style="text-align: center; box-shadow: 1px 0 4px rgb(0, 0, 0, .8);">
+      <span class="icon">02</span>
+      <h3>Invest</h3>
+      <p>Select an opportunity, review its details and follow the funding process before committing capital.</p></article>
+    <article class="card info-card" style="text-align: center; box-shadow: 1px 0 4px rgb(0, 0, 0, .8);">
+      <span class="icon">03</span>
+      <h3>Track</h3>
+      <p>Use your dashboard and transaction history to keep track of positions, funding activity and account information.</p></article>
+  </div>
+</section>
+
+<section id="why" class="dark-section">
+  <div class="container content-section">
+    <div class="section-heading light">
+      <span class="eyebrow" style="color: #6d6d6db6;">WHY GROWVEST</span>
+      <h2>Designed for clarity, not confusion.</h2>
+      <p>Every part of the interface is organized around helping users understand what they are doing before they proceed.</p>
+    </div>
+    <div class="grid grid4">
+      <article class="feature"><b>01</b><h3>Multi-asset</h3><p>Crypto, agriculture and real estate are presented within one platform.</p></article>
+      <article class="feature"><b>02</b><h3>Transparent</h3><p>Minimums, risk labels, project descriptions and payment information are displayed upfront.</p></article>
+      <article class="feature"><b>03</b><h3>Trackable</h3><p>Portfolio and transaction pages make account activity easy to review.</p></article>
+      <article class="feature"><b>04</b><h3>Responsive</h3><p>The experience is designed for desktop, tablet and mobile screens.</p></article>
+    </div>
+  </div>
+</section>
+
+<section id="how" class="container content-section">
+  <div class="section-heading">
+    <span class="eyebrow">HOW IT WORKS</span>
+    <h2>From discovery to portfolio tracking</h2>
+  </div>
+  <div class="steps">
+    <article><span>1</span><div><h3>Create your account</h3><p>Set up your profile and review the account and security information.</p></div></article>
+    <article><span>2</span><div><h3>Complete verification</h3><p>For a production service, identity and compliance checks should be completed before eligible investing.</p></div></article>
+    <article><span>3</span><div><h3>Choose an opportunity</h3><p>Compare crypto, agriculture and real-estate opportunities and read the associated risk information.</p></div></article>
+    <article><span>4</span><div><h3>Fund with BTC</h3><p>This version presents Bitcoin as the only payment method. A real system must independently verify blockchain payments.</p></div></article>
+    <article><span>5</span><div><h3>Monitor your portfolio</h3><p>Use the dashboard and transaction ledger to follow your positions and account activity.</p></div></article>
+  </div>
+</section>
+
+<section class="container content-section">
+  <div class="section-heading">
+    <span class="eyebrow">ASSET CLASSES</span>
+    <h2>Three areas, one portfolio view.</h2>
+  </div>
+  <div class="grid grid3">
+    <article class="asset-card crypto">
+      <span>CRYPTO</span>
+      <h3>Digital assets</h3>
+      <p>Explore simulated digital-asset positions including Bitcoin, Ethereum and diversified crypto baskets.</p>
+      <a href="products.html?category=crypto">Explore crypto →</a>
+    </article>
+    <article class="asset-card agriculture">
+      <span>AGRICULTURE</span>
+      <h3>Productive projects</h3>
+      <p>Review simulated crop, livestock, farmland and agricultural-cycle opportunities.</p>
+      <a href="products.html?category=agriculture">Explore agriculture →</a>
+    </article>
+    <article class="asset-card realestate">
+      <span>REAL ESTATE</span>
+      <h3>Property opportunities</h3>
+      <p>Review simulated residential, commercial, rental and property-development opportunities.</p>
+      <a href="products.html?category=realestate">Explore real estate →</a>
+    </article>
+  </div>
+</section>
+
+<section class="container content-section">
+  <div class="btc-banner card">
+    <div>
+      <span class="eyebrow">BTC-ONLY PAYMENT</span>
+      <h2>Simple funding, clear verification.</h2>
+      <p>In this demo, Bitcoin is the only supported payment method. Payment proof remains pending until verified by a proper backend.</p>
+    </div>
+    <a class="btn primary" href="wallet.html">Open BTC wallet</a>
+  </div>
+</section>
+
+<section id="faq" class="container content-section">
+  <div class="section-heading">
+    <span class="eyebrow">FAQ</span>
+    <h2>Questions investors should ask</h2>
+  </div>
+  <div class="faq-grid">
+    <details open>
+      <summary>Is GrowVest a real investment company?</summary>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius, quae porro quia exercitationem molestias excepturi soluta ullam dignissimos recusandae beatae possimus ex! Culpa deleniti est sapiente iusto. Architecto, magni ex..</p>
+    </details>
+    <details>
+      <summary>What payment method does this version support?</summary>
+      <!--<p>Bitcoin only. The payment page is a demo workflow and does not independently confirm blockchain transactions.</p>
+    --></details>
+    <details>
+      <summary>Are the displayed returns guaranteed?</summary>
+      <!--<p>No. The displayed returns are illustrative or simulated. Investment returns can vary and may involve loss of capital.</p>
+    --></details>
+    <details>
+      <summary>What does KYC mean?</summary>
+      <!--<p>KYC means Know Your Customer. A production investment service would use an appropriate identity-verification provider and AML/compliance procedures.</p>
+    --></details>
+    <details>
+      <summary>Can I withdraw real money from this demo?</summary>
+      <!--<p>No. The current website is a front-end prototype and does not connect to a real bank, exchange, custodian or payment processor.</p>
+    --></details>
+    <details>
+      <summary>How are BTC payments verified in production?</summary>
+      <!--<p>A secure backend should monitor the Bitcoin network, match the transaction to the intended deposit, confirm the required confirmations and then credit the account.</p>
+    --></details>
+  </div>
+</section>
+
+<section id="contact" class="contact-section">
+  <div class="container">
+    <div class="section-heading light">
+      <span class="eyebrow">CONTACT</span>
+      <h2>Need help or want to learn more?</h2>
+      <p>Use the contact form below for the prototype. Replace the demo details with your organization's verified support channels before launch.</p>
+    </div>
+    <div class="contact-grid">
+      <form class="card contact-form" id="contactForm">
+        <h3>Send a message</h3>
+        <label>Name<input required name="name" placeholder="Your name"></label>
+        <label>Email<input required type="email" name="email" placeholder="you@example.com"></label>
+        <label>Subject<select name="subject"><option>General enquiry</option><option>Investment information</option><option>BTC payment</option><option>Account support</option><option>Technical support</option></select></label>
+        <label>Message<textarea required name="message" rows="6" placeholder="How can we help?"></textarea></label>
+        <button class="btn primary" type="submit">Send message</button>
+      </form>
+      <div class="contact-details">
+        <div>
+          <span>SUPPORT</span>
+          <h3>support@growvest.example</h3>
+          <p>Demo contact address — configure a real business mailbox before production.</p>
+        </div>
+        <div>
+          <span>RESPONSE</span>
+          <h3>Support centre</h3>
+          <p>For a production platform, publish support hours, escalation procedures and service-level expectations.</p></div>
+        <div>
+          <span>SECURITY</span>
+          <h3>Security enquiries</h3>
+          <p>Do not send passwords, private keys, seed phrases or sensitive identity documents by email.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container footer-grid">
+    <div><a class="brand" href="index.html"><b>G</b> GrowVest</a><p>Multi-asset investment platform prototype.</p></div>
+    <div>
+      <strong>Platform</strong>
+      <a href="products.html">Investments</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="wallet.html">BTC Wallet</a></div>
+    <div>
+      <strong>Company</strong>
+      <a href="#about">About</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div>
+      <strong>Account</strong>
+      <a href="login.html">Login</a>
+      <a href="register.html">Register</a>
+      <a href="kyc.html">KYC</a>
+      <a href="profile.html">Profile</a>
+      <a href="transactions.html">Transactions</a>
+    </div>
+  </div>
+  <p>© 2026 GrowVest Company · No Risk financial service.</p>
+</footer>
+
+<script>
+
+
+document.getElementById("contactForm").addEventListener("submit", function(e){
+  e.preventDefault();
+  toast("Your will Recieve a Massege in your email Shortly.");
+  this.reset();
+});
+
+let sidebar = document.querySelector('.sidebar');
+
+function showSidebar(){
+  sidebar.style="dispaly:flex;"
+}
+
+function closeSidebar(){
+  sidebar.style="display:none;"
+}
+</script>
+<script src="side.js"></script>
+</body>
+</html>

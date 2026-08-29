@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>Investment Detail — GrowVest</title>
+        <link rel="stylesheet" href="styles.css">
+        <script src="config.js"></script>
+        <script src="products.js"></script>
+        <script src="common.js"></script>
+        <script src="auth.js"></script>
+    </head>
+    <body>
+        <header class="nav">
+            <a class="brand" href="index.html"><b>G</b> GrowVest</a>
+            <button class="toggle">☰</button>
+            <nav class="links">
+                <a href="products.html">Investments</a>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="wallet.html">BTC Wallet</a>
+                <a href="transactions.html">Transactions</a>
+                <a href="kyc.html">KYC</a>
+            </nav>
+        </header>
+        <main class="container">
+            <div id="detail">
+
+            </div>
+        </main>
+        <script>
+const id=new URLSearchParams(location.search).get("id")||"P001",p=PRODUCTS.find(x=>x.id===id)||PRODUCTS[0];
+detail.innerHTML=`<span class="eyebrow">${p.category.toUpperCase()}</span><h1>${p.name}</h1><div class="grid grid3"><article class="card"><h3>Investment profile</h3><p class="muted">This is a simulated opportunity. Production listings should include verified documents, valuation, risk scoring and vendor verification.</p><div class="meta"><span>Minimum</span><b>$${p.min}</b></div><div class="meta"><span>Risk</span><b>${p.risk}</b></div><div class="meta"><span>Indicative return</span><b>${p.return}</b></div></article><article class="card"><h3>Invest with BTC</h3><p class="muted">Enter the USD-equivalent investment amount. The demo converts it to BTC using a simulated rate.</p><label>USD amount<input class="input" id="amount" type="number" min="${p.min}" value="${p.min}" style="width:100%"></label><p id="btcQuote" class="btc">0 BTC</p><button class="btn primary full" onclick="buy()">Continue to BTC payment</button></article><article class="card"><h3>Milestones</h3><p>✓ Listing reviewed</p><p>✓ Investment profile created</p><p>○ Funding verification</p><p>○ Project completion</p><p>○ Payout</p></article></div>`;
+function buy(){if(!getAuth()){location.href="login.html?next="+encodeURIComponent(location.href);return}let a=Number(amount.value);if(a<p.min)return toast("Minimum is $"+p.min);let rate=100000,btc=a/rate;let s=getState();s.positions.push({id:p.id,name:p.name,category:p.category,usd:a,btc,status:"Pending funding"});s.investedBTC+=btc;saveState(s);addTx("Investment",p.name,btc,"Awaiting BTC payment");location.href="wallet.html?amount="+btc+"&product="+encodeURIComponent(p.name)}
+amount.oninput=()=>btcQuote.textContent=(Number(amount.value||0)/100000).toFixed(8)+" BTC";
+        </script>
+    </body>
+</html>

@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Login — GrowVest</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="auth.js"></script>
+  </head>
+  <body class="auth-page">
+<div class="auth-shell">
+  <a class="brand auth-brand" href="index.html" style="color: #524d4d;"><span class=""><button style="background: #524d4d; border: none; color: #fff; width: 34px; height: 34px; font-size: 25px; border-radius: 5px;">G</button> GrowVest</span></a>
+  <div class="auth-card">
+    <span class="eyebrow">SECURE LOGIN</span>
+    <h1>Welcome back</h1>
+    <p class="muted">Sign in to manage your demo portfolio and account.</p>
+  <form id="loginForm" novalidate>
+      <label>Email<input id="email" type="email" autocomplete="email" required placeholder="you@example.com" style="border: solid 1px #ccc; border-radius:10px; width:100%; padding: 0 10px; height: 40px; margin-bottom: 25px; margin-top: 5px;"></label>
+      <label>Password<input id="password" type="password" autocomplete="current-password" required placeholder="Your password" style="border: solid 1px #ccc; border-radius:10px; width:100%; padding: 0 10px; height: 40px; margin-bottom: 25px; margin-top: 5px;"></label>
+      <div class="auth-row">
+        <label class="check">
+          <input id="remember" type="checkbox"> Remember this device</label>
+          <a href="forgot-password.html">Forgot password?</a></div>
+          <button id="submitBtn" class="btn primary full">Sign in</button>
+  </form>
+<p class="auth-switch">New here? <a href="register.html">Create an account</a></p>
+<div class="notice">Demo mode: accounts are stored only in this browser. No real investment funds or passwords should be entered.</div>
+</div>
+</div>
+
+<script>
+loginForm.addEventListener("submit",async e=>{
+ e.preventDefault();
+ const em=email.value.trim().toLowerCase(), pw=password.value;
+ if(!validEmail(em))return toast("Enter a valid email address.");
+ if(!pw)return toast("Enter your password.");
+ const attempts=getAttempts(), now=Date.now(), rec=attempts[em];
+ if(rec && rec.lockUntil>now)return toast("Too many attempts. Try again in a few minutes.");
+ submitBtn.disabled=true; submitBtn.textContent="Signing in…";
+ const u=users().find(x=>x.email===em);
+ const hp=await hashPassword(pw);
+ if(!u || u.passwordHash!==hp){
+   const next=(rec&&rec.count||0)+1;
+   attempts[em]={count:next,lockUntil:next>=5?now+5*60*1000:0}; saveAttempts(attempts);
+   submitBtn.disabled=false;submitBtn.textContent="Sign in";
+   return toast(next>=5?"Account temporarily locked after repeated failures.":"Incorrect email or password.");
+ }
+ delete attempts[em];saveAttempts(attempts);
+ setAuth({id:u.id,name:u.name,email:u.email,loginAt:new Date().toISOString(),remember:remember.checked});
+ const nextPage=new URLSearchParams(location.search).get("next")||"dashboard.html";
+ location.href=nextPage;
+});
+</script>
+</body>
+</html>

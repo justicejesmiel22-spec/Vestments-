@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>Dashboard — GrowVest</title>
+        <link rel="stylesheet" href="styles.css">
+        <script src="config.js"></script>
+        <script src="common.js"></script>
+        <script src="auth.js"></script>
+        <script>
+        document.addEventListener("DOMContentLoaded",requireAuth)
+        </script>
+        </head>
+        <body>
+            <header class="nav">
+                <a class="brand" href="index.html"><b>G</b> GrowVest</a>
+                <button class="toggle">☰</button>
+                <nav class="links">
+                    <a href="products.html">Investments</a>
+                    <a href="dashboard.html">Dashboard</a>
+                    <a href="wallet.html">BTC Wallet</a>
+                    <a href="transactions.html">Transactions</a>
+                    <a href="profile.html">Profile</a>
+                </nav>
+                <a class="btn secondary nav-login" href="logout.html">Logout</a>
+            </header>
+            <main class="container">
+                <span class="eyebrow">PORTFOLIO</span>
+                <h1>Dashboard</h1>
+                <p class="muted">Welcome, <b data-auth-name>Investor</b>.</p>
+                <div class="grid grid4 stats">
+                    <article class="card">
+                        <span class="muted">BTC wallet</span>
+                        <strong id="b">0 BTC</strong>
+                    </article>
+                    <article class="card">
+                        <span class="muted">Invested BTC</span>
+                        <strong id="i">0 BTC</strong>
+                    </article>
+                    <article class="card">
+                        <span class="muted">Positions</span>
+                        <strong id="p">0</strong>
+                    </article>
+                    <article class="card">
+                        <span class="muted">Pending transactions</span>
+                        <strong id="t">0</strong>
+                    </article>
+                </div>
+                <div class="card" style="margin-top:18px">
+                    <h2>Portfolio positions</h2>
+                    <div class="tablewrap">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Category</th>
+                                    <th>USD</th>
+                                    <th>BTC</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="rows">
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </main>
+                
+    <script>let s=getState();b.textContent=moneyBTC(s.btcBalance);i.textContent=moneyBTC(s.investedBTC);p.textContent=s.positions.length;t.textContent=s.transactions.filter(x=>x.status&&x.status.includes("Pending")).length;rows.innerHTML=s.positions.map(x=>`<tr><td>${x.name}</td><td>${x.category}</td><td>$${x.usd.toFixed(2)}</td><td>${x.btc.toFixed(8)}</td><td><span class="status pending">${x.status}</span></td></tr>`).join("")||"<tr><td colspan=5>No positions yet.</td></tr>";</script>
+    <script>document.addEventListener("DOMContentLoaded",updateAuthUI)</script>
+</body>
+</html>

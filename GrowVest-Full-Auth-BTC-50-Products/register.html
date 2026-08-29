@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+    <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>Register — GrowVest</title>
+        <link rel="stylesheet" href="styles.css">
+        <script src="auth.js"></script>
+    </head>
+    <body class="auth-page">
+        <div class="auth-shell">
+            <a class="brand auth-brand" href="index.html" style="color: #524d4d;"><span class=""><button style="background: #524d4d; border: none; color: #fff; width: 34px; height: 34px; font-size: 25px; border-radius: 5px;">G</button> GrowVest</span></a>
+            <div class="auth-card">
+                <span class="eyebrow">CREATE ACCOUNT</span>
+                <h1>Open your account</h1>
+                <p class="muted">Create a demo account to access the GrowVest platform.</p>
+            <form id="registerForm" novalidate>
+                <label>Full name<input id="name" autocomplete="name" required minlength="2" placeholder="Your full name"style="border: solid 1px #ccc; border-radius:10px; width:100%; padding: 0 10px; height: 40px; margin-bottom: 25px; margin-top: 5px;"></label>
+                <label>Email<input id="email" type="email" autocomplete="email" required placeholder="you@example.com"style="border: solid 1px #ccc; border-radius:10px; width:100%; padding: 0 10px; height: 40px; margin-bottom: 25px; margin-top: 5px;"></label>
+                <label>Password<input id="password" type="password" autocomplete="new-password" required minlength="8" placeholder="Minimum 8 characters" style="border: solid 1px #ccc; border-radius:10px; width:100%; padding: 0 10px; height: 40px; margin-bottom: 25px; margin-top: 5px;"></label>
+                <div class="password-meter">
+                    <span id="meter"></span>
+                </div>
+                <small id="strength" class="muted">Password strength: —</small> <br><br>
+                <label>Confirm password<input id="confirm" type="password" autocomplete="new-password" required style="border: solid 1px #ccc; border-radius:10px; width:100%; padding: 0 10px; height: 40px; margin-bottom: 25px; margin-top: 5px;"></label>
+                <label class="check"><input id="terms" type="checkbox" required> I accept the demo terms and risk disclosure.</label>
+                <button id="submitBtn" class="btn primary full">Create account</button>
+            </form>
+                <p class="auth-switch">Already registered? <a href="login.html">Sign in</a></p>
+                <div class="notice">For a real service, account creation must be handled by a secure backend with email verification, KYC/AML, MFA and proper data protection.</div>
+            </div>
+        </div>
+
+
+<script>
+password.addEventListener("input",()=>{
+ const s=passwordScore(password.value), names=["Very weak","Weak","Fair","Good","Strong","Very strong"];
+ meter.style.width=(s/5*100)+"%"; strength.textContent="Password strength: "+names[s];
+});
+registerForm.addEventListener("submit",async e=>{
+ e.preventDefault();
+ const n=name.value.trim(),em=email.value.trim().toLowerCase(),pw=password.value;
+ if(n.length<2)return toast("Enter your full name.");
+ if(!validEmail(em))return toast("Enter a valid email address.");
+ if(passwordScore(pw)<4)return toast("Use 8+ characters with upper/lowercase, number and symbol.");
+ if(pw!==confirm.value)return toast("Passwords do not match.");
+ if(!terms.checked)return toast("Accept the demo terms to continue.");
+ const list=users();
+ if(list.some(x=>x.email===em))return toast("An account with this email already exists.");
+ submitBtn.disabled=true;submitBtn.textContent="Creating account…";
+ const u={id:(crypto.randomUUID?crypto.randomUUID():String(Date.now())),name:n,email:em,passwordHash:await hashPassword(pw),createdAt:new Date().toISOString(),verified:false};
+ list.push(u);saveUsers(list);
+ setAuth({id:u.id,name:u.name,email:u.email,loginAt:new Date().toISOString(),remember:true});
+ toast("Account created.");
+ setTimeout(()=>location.href="dashboard.html",500);
+});
+</script>
+</body>
+</html>
